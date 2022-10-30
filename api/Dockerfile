@@ -7,11 +7,18 @@ RUN dnf install -y \
       less \
       findutils \
       man \
+      git \
       make
 
 RUN dnf install -y \
       php8.1-cli \
       php8.1-fpm \
+      php8.1-xml \
+      php8.1-mbstring \
+      php8.1-pdo \
+      php8.1-opcache \
+      php8.1-process \
+      php8.1-intl \
       symfony-cli
 
 RUN dnf clean all && \
