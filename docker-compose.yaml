@@ -2,3 +2,12 @@ version: "3.8"
 services:
   php:
     build: api
+    volumes:
+      - .:/app/tamakiii-sandbox/poc-theater
+
+  nginx:
+    build: nginx
+    ports:
+      - ${PORT_HTTP:-80}:80
+    volumes:
+      - .:/app/tamakiii-sandbox/poc-theater
