@@ -32,3 +32,13 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 RUN git config --global user.email "tamakiii@users.noreply.github.com" && \
     git config --global user.name "tamakiii"
+
+RUN ln -s /dev/stderr /var/log/php-fpm/error.log && \
+    ln -s /dev/stderr /var/log/php-fpm/www-error.log
+
+COPY docker/etc/php-fpm.conf /etc/php-fpm.conf
+COPY docker/etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf
+
+RUN mkdir /run/php-fpm
+
+CMD ["php-fpm", "--nodaemonize", "--allow-to-run-as-root"]
