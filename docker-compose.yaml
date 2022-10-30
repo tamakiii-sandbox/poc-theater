@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  php:
+    build: api
+    working_dir: /app/tamakiii-sandbox/poc-theater/api
+    volumes:
+      - .:/app/tamakiii-sandbox/poc-theater
+
+  nginx:
+    build: nginx
+    working_dir: /app/tamakiii-sandbox/poc-theater
+    ports:
+      - ${PORT_HTTP:-80}:80
+    volumes:
+      - .:/app/tamakiii-sandbox/poc-theater
